@@ -1,11 +1,16 @@
 import { Form, Button } from "react-bootstrap";
 import ListaTareas from "./ListaTareas";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ItemTarea from "./ItemTarea";
 
 const Formulario = () => {
   const [tarea, setTarea] = useState("");
-  const [lista, setLista] = useState([]);
+  let tareasLocalStorage = JSON.parse(localStorage.getItem('listaTareas')) || [];
+  const [lista, setLista] = useState([tareasLocalStorage]);
+
+  useEffect(()=>{
+    localStorage.setItem('listaTareas', JSON.stringify(lista))
+  }, [lista])
 
   const handleSubmit = (e) =>{
     e.preventDefault();
