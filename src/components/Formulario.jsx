@@ -6,7 +6,7 @@ import ItemTarea from "./ItemTarea";
 const Formulario = () => {
   const [tarea, setTarea] = useState("");
   let tareasLocalStorage = JSON.parse(localStorage.getItem('listaTareas')) || [];
-  const [lista, setLista] = useState([tareasLocalStorage]);
+  const [lista, setLista] = useState(tareasLocalStorage);
 
   useEffect(()=>{
     localStorage.setItem('listaTareas', JSON.stringify(lista))
